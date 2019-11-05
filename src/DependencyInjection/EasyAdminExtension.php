@@ -118,7 +118,7 @@ class EasyAdminExtension extends Extension
         }
 
         // if config format #3 is used, ensure that it defines the 'class' option
-        if (!isset($entityConfig['class'])) {
+        if (!isset($entityConfig['class']) && !isset($entityConfig['noEntity'])) {
             throw new \RuntimeException(sprintf('The "%s" entity must define its associated Doctrine entity class using the "class" option.', $entityName));
         }
 

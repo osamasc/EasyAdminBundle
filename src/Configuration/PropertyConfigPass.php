@@ -98,6 +98,12 @@ class PropertyConfigPass implements ConfigPassInterface
 
         foreach ($backendConfig['entities'] as $entityName => $entityConfig) {
             $properties = [];
+
+            if (!isset($entityConfig['properties'])) {
+                continue;
+            }
+
+
             foreach ($entityConfig['properties'] as $propertyName => $propertyMetadata) {
                 $typeGuess = $typeGuesser->guessType($entityConfig['class'], $propertyName);
                 $requiredGuess = $typeGuesser->guessRequired($entityConfig['class'], $propertyName);
